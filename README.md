@@ -10,5 +10,7 @@ You can use the following command to execute the automated tests:
 By default it will be run in Chrome.
 
 ```shell script
-./gradlew clean test
+./gradlew clean test -Pbrowser=chrome
+./gradlew clean test -Pbrowser=headless
+./gradlew clean test -Pbrowser=firefox
 ```

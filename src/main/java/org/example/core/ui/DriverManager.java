@@ -9,7 +9,8 @@ public class DriverManager {
     private final WebDriver driver;
 
     private DriverManager() {
-        driver = BrowserFactory.getBrowser("chrome");
+        String browser = System.getProperty("browser", "chrome");
+        driver = BrowserFactory.getBrowser(browser);
     }
 
     public static DriverManager getInstance() {

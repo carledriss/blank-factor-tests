@@ -19,9 +19,14 @@ dependencies {
 }
 
 tasks.named('test') {
+    systemProperty "browser", project.hasProperty("browser") ? project.getProperty("browser") : "chrome"
     useTestNG() {
         useDefaultListeners = true
         outputDirectory = file("$projectDir/build/TestNG_Reports")
+    }
+    testLogging {
+        events "passed", "skipped", "failed" // Show test results in the console
+        exceptionFormat "full" // Show full stack traces for failures
     }
     reports.html.setDestination(file("$projectDir/build/GradleReports"))
 }
