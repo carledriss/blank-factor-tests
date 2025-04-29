@@ -23,6 +23,10 @@ public class RetirementAndWealthPage extends AbstractPage {
     @FindBy(css = ".cards-grid-slider-wrapper .swiper-slide")
     private List<WebElement> cards;
 
+    public RetirementAndWealthPage(final WebDriver driver) {
+        super(driver);
+    }
+
     public String getThirdCardText() {
         action.click(sectionHeading);
         WebElement thirdCard = cards.get(2);
@@ -33,6 +37,6 @@ public class RetirementAndWealthPage extends AbstractPage {
     public ContactPage clickLetsGetStarted() {
         action.scrollTo(letsGetStartedButton);
         action.click(letsGetStartedButton);
-        return new ContactPage();
+        return new ContactPage(driver);
     }
 }

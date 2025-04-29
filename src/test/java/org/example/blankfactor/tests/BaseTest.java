@@ -1,23 +1,28 @@
 package org.example.blankfactor.tests;
 
-import org.example.blankfactor.pages.HomePage;
-import org.example.core.ui.DriverManager;
+
+import org.example.core.ui.BrowserFactory;
+import org.example.core.ui.DriverFactory;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 
 public abstract class BaseTest {
 
-    protected HomePage homePage;
-
-    @BeforeTest
-    public void setup() {
-        homePage = new HomePage();
+    protected WebDriver getWebdriver() {
+        WebDriver driverSession = DriverFactory.getDriver();
+        if (driverSession == null || ((RemoteWebDriver) driverSession).getSessionId() == null) {
+            String browser = System.getProperty("browser", "chrome");
+            WebDriver driver = BrowserFactory.getBrowser(browser);
+            driver.manage().window().maximize();
+            DriverFactory.addDriver(driver);
+        }
+        return DriverFactory.getDriver();
     }
 
     @AfterTest
     public void teardown() {
-        WebDriver driver = DriverManager.getInstance().getDriver();
+        WebDriver driver = DriverFactory.getDriver();
         if (driver != null) {
             driver.quit();
         }

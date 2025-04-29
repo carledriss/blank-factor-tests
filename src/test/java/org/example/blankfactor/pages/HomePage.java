@@ -1,6 +1,7 @@
 package org.example.blankfactor.pages;
 
 import org.example.core.ui.AbstractPage;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -19,7 +20,8 @@ public class HomePage extends AbstractPage {
     @FindBy(xpath = "//a[@title='Retirement and wealth']")
     private WebElement retirementAndWealthLink;
 
-    public HomePage() {
+    public HomePage(final WebDriver driver) {
+        super(driver);
         driver.get("https://blankfactor.com/");
     }
 
@@ -30,7 +32,7 @@ public class HomePage extends AbstractPage {
     public RetirementAndWealthPage navigateToRetirementAndWealthPage() {
         action.hover(industriesButton);
         action.click(retirementAndWealthLink);
-        return new RetirementAndWealthPage();
+        return new RetirementAndWealthPage(driver);
     }
 
 }

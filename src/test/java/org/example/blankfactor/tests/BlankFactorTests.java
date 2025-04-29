@@ -1,6 +1,8 @@
 package org.example.blankfactor.tests;
 
 import org.example.blankfactor.pages.ContactPage;
+import org.example.blankfactor.pages.HomePage;
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -11,6 +13,8 @@ public class BlankFactorTests extends BaseTest {
 
     @Test
     public void testCopyThirdTileTextOnHoverFromRetirementServicesSection() {
+        WebDriver driver = getWebdriver();
+        HomePage homePage = new HomePage(driver);
         homePage.clickAcceptAllCookies();
         String actualText = homePage.navigateToRetirementAndWealthPage()
                 .getThirdCardText();
@@ -19,6 +23,8 @@ public class BlankFactorTests extends BaseTest {
 
     @Test
     public void testClickGetStartedButtonAndVerifyNavigation() {
+        WebDriver driver = getWebdriver();
+        HomePage homePage = new HomePage(driver);
         ContactPage contactPage = homePage.navigateToRetirementAndWealthPage()
                 .clickLetsGetStarted();
         Assert.assertEquals(contactPage.getCurrentUrl(), EXPECTED_CONTACT_URL);

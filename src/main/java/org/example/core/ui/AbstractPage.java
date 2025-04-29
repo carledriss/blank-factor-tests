@@ -15,8 +15,8 @@ public abstract class AbstractPage {
 
     protected WebdriverAction action;
 
-    protected AbstractPage() {
-        this.driver = DriverManager.getInstance().getDriver();
+    protected AbstractPage(final WebDriver driver) {
+        this.driver = driver;
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(DEFAULT_IMPLICIT_TIMEOUT_IN_SECONDS));
         this.wait = new MyCustomWait(driver);
         this.action = new WebdriverAction(driver, wait);

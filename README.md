@@ -14,3 +14,11 @@ By default it will be run in Chrome.
 ./gradlew clean test -Pbrowser=headless
 ./gradlew clean test -Pbrowser=firefox
 ```
+
+###Run automated tests in parallel
+You can use the following command to execute the automated tests:
+By default it will be run in one thread.
+
+```shell script
+./gradlew clean test -Pbrowser=chrome -Pthread-count=5
+```
