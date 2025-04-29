@@ -1,45 +1,28 @@
 package org.example.blankfactor.tests;
 
 import org.example.blankfactor.pages.ContactPage;
-import org.example.blankfactor.pages.HomePage;
-import org.example.core.ui.DriverManager;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class BlankFactorTests {
+public class BlankFactorTests extends BaseTest {
 
     private static final String EXPECTED_CONTACT_URL = "https://blankfactor.com/contact/";
     private static final String EXPECTED_TEXT = "Automate your operations and get to market quickly and securely. Leverage predictive data analytics using machine learning to build reliable, yet forward-thinking financial solutions.";
 
-    private HomePage home;
-
-    @BeforeTest
-    public void setup() {
-        home = new HomePage();
-    }
-
     @Test
     public void testCopyThirdTileTextOnHoverFromRetirementServicesSection() {
-        home.clickAcceptAllCookies();
-        String actualText = home.navigateToRetirementAndWealthPage().getThirdCardText();
+        homePage.clickAcceptAllCookies();
+        String actualText = homePage.navigateToRetirementAndWealthPage()
+                .getThirdCardText();
         Assert.assertEquals(actualText, EXPECTED_TEXT);
     }
 
     @Test
     public void testClickGetStartedButtonAndVerifyNavigation() {
-        ContactPage contactPage = home.navigateToRetirementAndWealthPage().clickLetsGetStarted();
+        ContactPage contactPage = homePage.navigateToRetirementAndWealthPage()
+                .clickLetsGetStarted();
         Assert.assertEquals(contactPage.getCurrentUrl(), EXPECTED_CONTACT_URL);
         contactPage.printPageTitle();
     }
 
-    @AfterTest
-    public void teardown() {
-        WebDriver driver = DriverManager.getInstance().getDriver();
-        if (driver != null) {
-            driver.quit();
-        }
-    }
 }
