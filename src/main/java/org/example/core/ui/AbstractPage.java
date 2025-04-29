@@ -25,4 +25,8 @@ public abstract class AbstractPage {
         PageFactory.initElements(driver, this);
     }
 
+    public String getCurrentUrl() {
+        return driver.getCurrentUrl();
+    }
+
 }

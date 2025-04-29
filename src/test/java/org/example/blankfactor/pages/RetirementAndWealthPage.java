@@ -26,8 +26,8 @@ public class RetirementAndWealthPage extends AbstractPage {
     public String getThirdCardText() {
         action.click(sectionHeading);
         WebElement thirdCard = cards.get(2);
-        thirdCard.click();
-        return thirdCard.findElement(By.cssSelector(".card-text.small")).getText().trim();
+        action.click(thirdCard);
+        return action.getText(thirdCard.findElement(By.cssSelector(".card-text.small"))).trim();
     }
 
     public ContactPage clickLetsGetStarted() {

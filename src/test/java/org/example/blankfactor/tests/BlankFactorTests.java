@@ -1,7 +1,7 @@
 package org.example.blankfactor.tests;
 
 import org.example.blankfactor.pages.ContactPage;
-import org.example.blankfactor.pages.Home;
+import org.example.blankfactor.pages.HomePage;
 import org.example.core.ui.DriverManager;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -14,11 +14,11 @@ public class BlankFactorTests {
     private static final String EXPECTED_CONTACT_URL = "https://blankfactor.com/contact/";
     private static final String EXPECTED_TEXT = "Automate your operations and get to market quickly and securely. Leverage predictive data analytics using machine learning to build reliable, yet forward-thinking financial solutions.";
 
-    private Home home;
+    private HomePage home;
 
     @BeforeTest
     public void setup() {
-        home = new Home();
+        home = new HomePage();
     }
 
     @Test
