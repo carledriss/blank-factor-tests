@@ -1,6 +1,6 @@
 package org.example.blankfactor.tests;
 
-import org.example.blankfactor.pages.Contact;
+import org.example.blankfactor.pages.ContactPage;
 import org.example.blankfactor.pages.Home;
 import org.example.core.ui.DriverManager;
 import org.openqa.selenium.WebDriver;
@@ -30,9 +30,9 @@ public class BlankFactorTests {
 
     @Test
     public void testClickGetStartedButtonAndVerifyNavigation() {
-        Contact contactPage = home.navigateToRetirementAndWealthPage().clickLetsGetStarted();
+        ContactPage contactPage = home.navigateToRetirementAndWealthPage().clickLetsGetStarted();
         Assert.assertEquals(contactPage.getCurrentUrl(), EXPECTED_CONTACT_URL);
-        System.out.println(contactPage.getPageTitle());
+        contactPage.printPageTitle();
     }
 
     @AfterTest

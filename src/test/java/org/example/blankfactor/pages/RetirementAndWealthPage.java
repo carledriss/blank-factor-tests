@@ -30,9 +30,9 @@ public class RetirementAndWealthPage extends AbstractPage {
         return thirdCard.findElement(By.cssSelector(".card-text.small")).getText().trim();
     }
 
-    public Contact clickLetsGetStarted() {
+    public ContactPage clickLetsGetStarted() {
         action.scrollTo(letsGetStartedButton);
         action.click(letsGetStartedButton);
-        return new Contact();
+        return new ContactPage();
     }
 }
