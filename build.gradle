@@ -20,7 +20,7 @@ dependencies {
 tasks.named('test') {
     useTestNG() {
         useDefaultListeners = true
-        outputDirectory = file("$projectDir/TestNG_Reports")
+        outputDirectory = file("$projectDir/build/TestNG_Reports")
     }
-    reports.html.setDestination(file("$projectDir/GradleReports"))
+    reports.html.setDestination(file("$projectDir/build/GradleReports"))
 }
