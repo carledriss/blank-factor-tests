@@ -14,9 +14,9 @@ public class WebdriverAction {
 
     private final WebDriverWait wait;
 
-    public WebdriverAction(final WebDriver driver, final WebDriverWait wait) {
+    public WebdriverAction(final WebDriver driver, final MyCustomWait wait) {
         this.driver = driver;
-        this.wait = wait;
+        this.wait = wait.getWait();
     }
 
     public void click(final WebElement webElement) {

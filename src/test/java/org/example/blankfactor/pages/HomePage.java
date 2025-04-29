@@ -24,8 +24,7 @@ public class HomePage extends AbstractPage {
     }
 
     public void clickAcceptAllCookies() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.elementToBeClickable(acceptAllCookiesButton)).click();
+        wait.getWait().until(ExpectedConditions.elementToBeClickable(acceptAllCookiesButton)).click();
     }
 
     public RetirementAndWealthPage navigateToRetirementAndWealthPage() {
